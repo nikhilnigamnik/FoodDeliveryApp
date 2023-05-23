@@ -22,10 +22,6 @@ const RestaurantCard = ({
           <h4>{costForTwoString}</h4>
         </span>
       </div>
-      <div>
-          <button>+</button>
-          <button>-</button>
-        </div>
     </>
   );
 };
