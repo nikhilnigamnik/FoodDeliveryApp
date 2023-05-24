@@ -12,13 +12,13 @@ const RestaurantCard = ({
 }) => {
   return (
     <>
-      <div className="card">
+      <div className="border h-[100%] gap-2 flex flex-col justify-between p-4 hover:shadow-lg transition-all">
         <img src={IMG_CDN_URL + cloudinaryImageId} />
-        <h2>{name}</h2>
-        <h5>{cuisines.join(", ")}</h5>
-        <h6>{area}</h6>
-        <span>
-          <h4>{lastMileTravelString}</h4>
+        <h2 className="font-semibold">{name}</h2>
+        <h5 className="text-gray-700">{cuisines.join(", ")}</h5>
+        <h6 className="text-gray-700">{area}</h6>
+        <span className="flex justify-between">
+          <h4 className="text-red-500">{lastMileTravelString}</h4>
           <h4>{costForTwoString}</h4>
         </span>
       </div>

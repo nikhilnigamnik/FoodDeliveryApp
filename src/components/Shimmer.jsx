@@ -1,8 +1,8 @@
 import React from "react";
 
-const Shimmer = ({index}) => {
+const Shimmer = ({ index }) => {
   return (
-    <div key={index} className="cardContainer">
+    <div key={index} className="cardContainer pt-10">
       {Array(19)
         .fill("")
         .map((e) => (

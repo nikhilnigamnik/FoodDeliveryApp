@@ -13,7 +13,7 @@ const Applayout = () => {
   return (
     <>
       <Nav />
-      <Outlet />
+      <Outlet  />
       {/* <Header />
       <Body /> */}
     </>

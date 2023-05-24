@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +29,7 @@ h6 {
 
 /* navbar */
 
-.navbar {
+/* .navbar {
   display: flex;
   justify-content: space-between;
 }
@@ -33,7 +37,7 @@ h6 {
 .nav {
   padding: 0.5rem;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-}
+} */
 
 .logo {
   width: 30%;
@@ -58,22 +62,23 @@ h6 {
 }
 
 .searchBar > input,
-button {
+      button {
   border: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   outline: 0;
 }
 .searchBar > input {
   width: 18rem;
-  padding: 1.2rem;
-  border-radius: 3rem 0rem 0rem 3rem;
+  padding: .6rem;
+  border-radius: 10px 0px 0px 10px;
+  
 }
 .searchBar > button {
   background-color: #000000;
   color: aliceblue;
-  width: 8rem;
-  padding: 1.2rem;
-  border-radius: 0rem 3rem 3rem 0rem;
+  width: 5rem;
+  border-radius: 0px 10px 10px 0px;
+ 
 }
 
 .heroSection {
@@ -93,7 +98,7 @@ button {
 
 /* card */
 
-.card > img {
+/* .card > img {
   width: 100%;
 }
 .card:hover {
@@ -105,17 +110,9 @@ button {
   width: 100%;
   padding: 0.5rem;
   transition: all 0.2s linear;
-}
+} */
 
-.cardContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 20%);
-  justify-content: center;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-  gap: 4rem;
-}
+
 
 .shimmerCard {
   /* width: 20%; */

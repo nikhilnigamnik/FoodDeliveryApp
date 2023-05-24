@@ -30,10 +30,10 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="searchBar">
+      <div className="searchBar pt-14">
       <input
           type="text"
-          placeholder="Search here"
+          placeholder="Search for resturant"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
@@ -50,7 +50,7 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="cardContainer">
+      <div className="grid  gap-10 px-10 grid-cols-4">
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
