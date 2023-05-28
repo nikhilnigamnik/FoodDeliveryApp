@@ -4,11 +4,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const Nav = () => {
   return (
-    <div className="py-4 fixed top-0 left-0 right-0 bg-white border">
+    <div className="py-4   fixed top-0 left-0 right-0 bg-white border">
       <div className="flex justify-between items-center  container">
         <div className="logo">
-          <Link className="logo" to="/">
+          <Link className="" to="/">
             <img
+            className="w-[7rem]"
               src="https://res.cloudinary.com/dtmp7op6k/image/upload/v1684857846/logo_o2djkp.png"
               alt=""
             />

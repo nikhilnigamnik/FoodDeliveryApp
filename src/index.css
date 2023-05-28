@@ -27,25 +27,9 @@ h6 {
   margin: 0 auto;
 }
 
-/* navbar */
 
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-}
 
-.nav {
-  padding: 0.5rem;
-  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-} */
 
-.logo {
-  width: 30%;
-}
-
-.logo > img {
-  width: 40%;
-}
 
 .links {
   gap: 7rem;
@@ -56,29 +40,25 @@ h6 {
 /* header */
 
 .searchBar {
-  margin: 3rem 0rem 3rem 0rem;
   display: flex;
   justify-content: center;
 }
 
 .searchBar > input,
-      button {
-  border: 0;
+       button {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   outline: 0;
 }
 .searchBar > input {
   width: 18rem;
-  padding: .6rem;
+  padding: 0.6rem;
   border-radius: 10px 0px 0px 10px;
-  
 }
 .searchBar > button {
   background-color: #000000;
   color: aliceblue;
   width: 5rem;
   border-radius: 0px 10px 10px 0px;
- 
 }
 
 .heroSection {
@@ -96,56 +76,3 @@ h6 {
   width: 100%;
 }
 
-/* card */
-
-/* .card > img {
-  width: 100%;
-}
-.card:hover {
-  
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.card {
-  width: 100%;
-  padding: 0.5rem;
-  transition: all 0.2s linear;
-} */
-
-
-
-.shimmerCard {
-  /* width: 20%; */
-  display: flex;
-  height: 200px;
-  background-color: grey;
-
-  background: #f6f7f8;
-  background-image: linear-gradient(
-    to right,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
-  );
-  background-repeat: no-repeat;
-  background-size: 800px 104px;
-  display: inline-block;
-  position: relative;
-
-  -webkit-animation-duration: 1s;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-name: placeholderShimmer;
-  -webkit-animation-timing-function: linear;
-}
-
-@-webkit-keyframes placeholderShimmer {
-  0% {
-    background-position: -468px 0;
-  }
-
-  100% {
-    background-position: 468px 0;
-  }
-}
