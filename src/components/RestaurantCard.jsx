@@ -5,6 +5,7 @@ const RestaurantCard = ({
   cloudinaryImageId,
   name,
   cuisines,
+  slaString,
   area,
   lastMileTravelString,
   costForTwoString,
@@ -17,8 +18,9 @@ const RestaurantCard = ({
         <h2 className="font-semibold">{name}</h2>
         <h5 className="text-gray-700">{cuisines.join(", ")}</h5>
         <h6 className="text-gray-700">{area}</h6>
-        <span className="flex justify-between">
-          <h4 className="text-red-500">{lastMileTravelString}</h4>
+        <span className="flex items-center justify-between">
+          <p className="bg-green-600 px-2 text-white">⭐ {avgRating}</p>
+          <h4 className="">{slaString}</h4>
           <h4>{costForTwoString}</h4>
         </span>
       </div>
