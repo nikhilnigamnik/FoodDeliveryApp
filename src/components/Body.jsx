@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
+import NoMatchfound from "./NoMatchfound";
 
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -31,8 +32,8 @@ const Body = () => {
   ) : (
     <>
       <div className="searchBar pb-5 pt-8">
-      <input
-      className="border"
+        <input
+          className="border"
           type="text"
           placeholder="Search for resturant"
           value={searchText}
@@ -41,7 +42,6 @@ const Body = () => {
           }}
         />
         <button
-        
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
@@ -52,17 +52,19 @@ const Body = () => {
         </button>
       </div>
 
-      <div className="grid  gap-10 px-10 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4">
-        {filteredRestaurants.map((restaurant) => {
-          return (
+      <div className="grid  gap-10 px-10 md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {filteredRestaurants?.length === 0 ? (
+          <NoMatchfound />
+        ) : (
+          filteredRestaurants.map((restaurant) => (
             <Link
-              to={"/resturant/" + restaurant.data.id}
+              to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
             >
               <RestaurantCard key={restaurant.data.id} {...restaurant.data} />
             </Link>
-          );
-        })}
+          ))
+        )}
       </div>
     </>
   );
