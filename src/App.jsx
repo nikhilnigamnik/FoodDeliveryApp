@@ -8,14 +8,16 @@ import About from "./pages/About";
 import RestaurantsDetails from "./pages/RestaurantsDetails";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Contact from "./pages/Contact";
+import Footer from "./components/Footer";
+// import { Provider } from "react-redux";
+// import store from "./utils/store";
 
 const Applayout = () => {
   return (
     <>
       <Nav />
-      <Outlet  />
-      {/* <Header />
-      <Body /> */}
+      <Outlet />
+      <Footer />
     </>
   );
 };
@@ -44,8 +46,8 @@ const App = createBrowserRouter([
         ),
       },
       {
-        path: "/resturant/:ids",
-        element: <RestaurantsDetails />,
+        path: '/resturant/:resId',
+        element: <RestaurantsDetails/>,
       },
     ],
   },

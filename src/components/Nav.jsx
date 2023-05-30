@@ -12,7 +12,7 @@ const Nav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   return (
-    <div className="py-4   fixed top-0 left-0 right-0 bg-white border">
+    <div className="py-4 z-10  fixed top-0 left-0 right-0 bg-white border">
       <div className="flex justify-between items-center  container">
         <div className="logo">
           <Link className="" to="/">
