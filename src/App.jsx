@@ -9,15 +9,20 @@ import RestaurantsDetails from "./pages/RestaurantsDetails";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
+import { Provider } from "react-redux";
+import store from "./utils/store";
+import Cart from "./components/Cart";
 // import { Provider } from "react-redux";
 // import store from "./utils/store";
 
 const Applayout = () => {
   return (
     <>
-      <Nav />
-      <Outlet />
-      <Footer />
+      <Provider store={store}>
+        <Nav />
+        <Outlet />
+        <Footer />
+      </Provider>
     </>
   );
 };
@@ -46,8 +51,14 @@ const App = createBrowserRouter([
         ),
       },
       {
-        path: '/resturant/:resId',
-        element: <RestaurantsDetails/>,
+        path: "/cart",
+        element: (
+          <Cart/>
+        )
+      },
+      {
+        path: "/resturant/:resId",
+        element: <RestaurantsDetails />,
       },
     ],
   },
