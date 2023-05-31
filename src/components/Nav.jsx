@@ -86,15 +86,15 @@ const Nav = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-          <div className="logo">
-           <Link className="" to="/">
-             <img
-               className="w-[7rem]"
-               src="https://res.cloudinary.com/dtmp7op6k/image/upload/v1685512011/logo_dhguk4.png"
-               alt=""
-             />
-           </Link>
-         </div>
+            <div className="logo">
+              <Link className="" to="/">
+                <img
+                  className="w-[7rem]"
+                  src="https://res.cloudinary.com/dtmp7op6k/image/upload/v1685512011/logo_dhguk4.png"
+                  alt=""
+                />
+              </Link>
+            </div>
           </div>
           <div className="hidden sm:flex">
             <div className="ml-4 flex items-center space-x-4">
@@ -173,12 +173,9 @@ const Nav = () => {
         <div className="sm:hidden" id="mobile-menu" transition-style="fade:in">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {/* Add your menu items here */}
-            <a
-              href="#"
-              className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Home
-            </a>
+            <Link className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" to="/">
+              <p>Home</p>{" "}
+            </Link>
             <a
               href="#"
               className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
@@ -191,6 +188,16 @@ const Nav = () => {
             >
               Contact
             </a>
+            <Link to="/cart">
+              <div className="relative px-3 py-2  flex items-center">
+                <p className="mr-4">Cart</p>
+                <AiOutlineShoppingCart className="text-[1.5rem] font-bold text-white" />
+
+                <span className="absolute flex left-20 bottom-5 items-center justify-center  bg-red-500 text-white rounded-full w-5 h-5">
+                  {cartItems}
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
       )}
