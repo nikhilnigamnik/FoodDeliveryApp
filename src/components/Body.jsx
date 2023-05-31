@@ -1,7 +1,7 @@
 // import { restaurantList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
-import  Shimmer  from "./Shimmer";
+import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
 import NoMatchfound from "./NoMatchfound";
@@ -27,12 +27,7 @@ const Body = () => {
 
   return allRestaurants?.length === 0 ? (
     <Shimmer />
-
-  ) 
-  
-  :
-  
-  (
+  ) : (
     <>
       <div className="searchBar pb-5 pt-8">
         <input
@@ -45,6 +40,7 @@ const Body = () => {
           }}
         />
         <button
+        className="bg-gray-800"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);
