@@ -6,7 +6,7 @@ const Shimmer = ({ id }) => {
       <div className="flex justify-center">
       <div className="mt-[4rem] py-4 rounded-md w-[30%] border"></div>
       </div>
-      <div className="grid gap-10 px-10 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 mt-[3rem]">
+      <div className="grid animate-pulse gap-10 px-10 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-4 mt-[3rem]">
         {Array(20)
           .fill("")
           .map((e, index) => (

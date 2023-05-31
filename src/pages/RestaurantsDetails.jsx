@@ -9,13 +9,14 @@ import { addItem, removeItem, getTotalAmount } from "../utils/cartSlice";
 import useRestaurant from "../utils/useRestaurant";
 
 import { FETCH_MENU_URL, IMG_CDN_URL, MENU_IMG_CDN_URL } from "../constants";
+import MenuShimmer from "../components/MenuShimmer";
 
 const RestaurantsDetails = () => {
   const { resId } = useParams();
   const [restaurant, setRestaurant] = useState({});
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items);
-  
+  const [isLoading, setIsLoading] = useState(true);
 
   const menuInfo = restaurant?.cards?.[0]?.card?.card?.info;
   const menuItems =
@@ -28,15 +29,15 @@ const RestaurantsDetails = () => {
     restaurant?.cards?.[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]?.card
       ?.card?.itemCards;
 
-      const handleAddItem = (item) => {
-        dispatch(addItem(item));
-        dispatch(getTotalAmount());
-      };
-    
-      const handleRemoveItem = (item) => {
-        dispatch(removeItem(item));
-        dispatch(getTotalAmount());
-      };
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    dispatch(getTotalAmount());
+  };
+
+  const handleRemoveItem = (item) => {
+    dispatch(removeItem(item));
+    dispatch(getTotalAmount());
+  };
 
   useEffect(() => {
     getRestaurantInfo();
@@ -46,19 +47,25 @@ const RestaurantsDetails = () => {
     try {
       const response = await fetch(FETCH_MENU_URL + resId);
       const json = await response.json();
-      console.log(json.data);
+      
       setRestaurant(json.data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching restaurant information:", error);
+      setIsLoading(false);
     }
   }
 
+  if (isLoading) {
+    return <MenuShimmer/>;
+  }
+
   return (
-    <div className="mx-20 mt-[7rem] overflow-hidden">
+    <div className="mx-20  mt-[7rem] overflow-hidden">
       {/* main section */}
       <div className="my-[2rem] border p-4">
-        <div className="flex justify-between">
-          <div className="flex gap-8">
+        <div className="flex  menu-header justify-between">
+          <div className="flex menu-header-item gap-8">
             <img width={150} src={IMG_CDN_URL + menuInfo?.cloudinaryImageId} />
             <div className="text-gray-700 flex flex-col gap-1">
               <h1 className="font-semibold text-lg">{menuInfo?.name}</h1>
@@ -66,10 +73,7 @@ const RestaurantsDetails = () => {
               <p>{menuInfo?.areaName}</p>
               <p>{menuInfo?.sla?.lastMileTravelString}</p>
             </div>
-            
           </div>
-          
-
           <div className="border  p-4 gap-1 flex flex-col justify-center items-center rounded">
             <p className="flex text-green-600 items-center gap-1">
               <AiFillStar />
@@ -132,28 +136,26 @@ const RestaurantsDetails = () => {
             </div>
 
             <div className="absolute top-[72px] left-[50%] w-24 h-9 translate-x-[-50%] flex items-center justify-around bg-lime-500 hover:bg-lime-600 rounded text-sm text-white font-bold">
-                  <button
-                    className="p-2"
-                    onClick={() =>
-                      cartItems[item?.card?.info?.id]?.quantity &&
-                      handleRemoveItem(item?.card?.info)
-                    }
-                  >
-                    <span>-</span>
-                  </button>
-                  <div>
-                    <span>
-                      {cartItems[item?.card?.info?.id]?.quantity || 0}
-                    </span>
-                  </div>
-                  <button
-                    data-testid="add-btn"
-                    className="p-2 z-30"
-                    onClick={() => handleAddItem(item?.card?.info)}
-                  >
-                    <span>+</span>
-                  </button>
-                </div>
+              <button
+                className="p-2"
+                onClick={() =>
+                  cartItems[item?.card?.info?.id]?.quantity &&
+                  handleRemoveItem(item?.card?.info)
+                }
+              >
+                <span>-</span>
+              </button>
+              <div>
+                <span>{cartItems[item?.card?.info?.id]?.quantity || 0}</span>
+              </div>
+              <button
+                data-testid="add-btn"
+                className="p-2 z-30"
+                onClick={() => handleAddItem(item?.card?.info)}
+              >
+                <span>+</span>
+              </button>
+            </div>
           </div>
         </div>
       ))}
