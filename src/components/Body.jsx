@@ -29,6 +29,8 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
+
+    {/* Searching Section */}
       <div className="searchBar pb-5 pt-8">
         <input
           className="border"
@@ -40,7 +42,7 @@ const Body = () => {
           }}
         />
         <button
-        className="bg-gray-800"
+          className="bg-gray-800"
           onClick={() => {
             const data = filterData(searchText, allRestaurants);
             setFilteredRestaurants(data);

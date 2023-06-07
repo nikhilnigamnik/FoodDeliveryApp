@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 
-// import { IoTimer } from "react-icons/io";
-// import { TbCurrencyRupee } from "react-icons/tb";
 import { addItem, removeItem, getTotalAmount } from "../utils/cartSlice";
 import useRestaurant from "../utils/useRestaurant";
 
@@ -17,6 +15,8 @@ const RestaurantsDetails = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMenuItems, setFilteredMenuItems] = useState([]);
 
   const menuInfo = restaurant?.cards?.[0]?.card?.card?.info;
   const menuItems =
@@ -47,22 +47,47 @@ const RestaurantsDetails = () => {
     try {
       const response = await fetch(FETCH_MENU_URL + resId);
       const json = await response.json();
-      
+
       setRestaurant(json.data);
       setIsLoading(false);
+      const initialMenuItems =
+        json.data?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
+          ?.card?.card?.itemCards ||
+        json.data?.cards?.[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]
+          ?.card?.card?.itemCards ||
+        json.data?.cards?.[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
+          ?.card?.card?.itemCards ||
+        json.data?.cards?.[3]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]
+          ?.card?.card?.itemCards;
+
+      setFilteredMenuItems(initialMenuItems || []);
     } catch (error) {
       console.error("Error fetching restaurant information:", error);
       setIsLoading(false);
     }
   }
 
+  const handleSearch = () => {
+    if (searchQuery.trim() !== "") {
+      const filteredItems = menuItems?.filter((item) =>
+        item?.card?.info?.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredMenuItems(filteredItems);
+    } else {
+      setFilteredMenuItems(menuItems);
+    }
+  };
+
+  const menuItemsCount = menuItems ? menuItems.length : 0;
+
   if (isLoading) {
-    return <MenuShimmer/>;
+    return <MenuShimmer />;
   }
 
   return (
-    <div className="mx-20  mt-[7rem] overflow-hidden">
+    <div className="mx-20 mt-[7rem] overflow-hidden">
       {/* main section */}
+
       <div className="my-[2rem] border p-4">
         <div className="flex  menu-header justify-between">
           <div className="flex menu-header-item gap-8">
@@ -74,6 +99,7 @@ const RestaurantsDetails = () => {
               <p>{menuInfo?.sla?.lastMileTravelString}</p>
             </div>
           </div>
+
           <div className="border  p-4 gap-1 flex flex-col justify-center items-center rounded">
             <p className="flex text-green-600 items-center gap-1">
               <AiFillStar />
@@ -85,13 +111,42 @@ const RestaurantsDetails = () => {
         </div>
       </div>
 
-      {/* Menu Items */}
+      {/* Search Input */}
 
-      {menuItems?.map((item, index) => (
+      <div className="flex justify-between mb-[2rem] items-center">
+        <div className="bg-gray-800 text-white rounded p-2">
+          <span>Menu Items: {menuItemsCount}</span>
+        </div>
+        <div>
+          <input
+            type="text"
+            className="border border-gray-300 p-2 mr-2 rounded"
+            placeholder="Search by name"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+          <button
+            className="bg-gray-800 text-white rounded p-2"
+            onClick={handleSearch}
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      {/* Menu Items Count */}
+      <div className="fixed top-0 right-0 m-4 p-2 bg-gray-900 text-white rounded-full">
+        <span>Menu Items: {filteredMenuItems.length}</span>
+      </div>
+
+      {/* Menu Items */}
+      {filteredMenuItems.map((item, index) => (
         <div
-          className="flex hover:shadow-md  mb-4 justify-between items-center p-4  border  transition duration-[0.3s]"
+          className="flex hover:shadow-md mb-4 justify-between items-center p-4 border transition duration-[0.3s]"
           key={index}
         >
+          {/* ...existing code... */}
+
           <div className="">
             <div
               className={
