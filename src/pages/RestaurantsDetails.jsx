@@ -85,7 +85,7 @@ const RestaurantsDetails = () => {
   }
 
   return (
-    <div className="mx-20 mt-[7rem] overflow-hidden">
+    <div className="mx-10 mt-[7rem] overflow-hidden">
       {/* main section */}
 
       <div className="my-[2rem] border p-4">
@@ -113,14 +113,14 @@ const RestaurantsDetails = () => {
 
       {/* Search Input */}
 
-      <div className="flex justify-between mb-[2rem] items-center">
-        <div className="bg-gray-800 text-white rounded p-2">
-          <span>Menu Items: {menuItemsCount}</span>
+      <div className="flex flex-col md:flex-row justify-between mb-4 items-center">
+        <div className="bg-gray-800 text-white rounded p-2 mb-2 md:mb-0">
+          <span>Menu Items: {filteredMenuItems?.length || 0}</span>
         </div>
-        <div>
+        <div className="flex flex-col md:flex-row">
           <input
             type="text"
-            className="border border-gray-300 p-2 mr-2 rounded"
+            className="border border-gray-300 p-2 mb-2 md:mr-2 md:mb-0 rounded"
             placeholder="Search by name"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
@@ -135,9 +135,6 @@ const RestaurantsDetails = () => {
       </div>
 
       {/* Menu Items Count */}
-      <div className="fixed top-0 right-0 m-4 p-2 bg-gray-900 text-white rounded-full">
-        <span>Menu Items: {filteredMenuItems.length}</span>
-      </div>
 
       {/* Menu Items */}
       {filteredMenuItems.map((item, index) => (
