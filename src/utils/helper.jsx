@@ -4,4 +4,7 @@ export function filterData(searchText, restaurants) {
     );
   
     return filterData;
+
+
+    
   }
