@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../utils/cartSlice";
 import CartItems from "./CartItems";
 import CheckOut from "./Checkout";
-import { Link } from "react-router-dom";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
