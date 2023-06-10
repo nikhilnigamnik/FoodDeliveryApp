@@ -21,10 +21,10 @@ const Applayout = () => {
     <>
       <Provider store={store}>
         <Nav />
-        
         <Outlet />
         <Footer />
       </Provider>
+      <Toaster />
     </>
   );
 };

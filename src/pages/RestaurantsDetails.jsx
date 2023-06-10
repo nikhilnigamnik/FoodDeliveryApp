@@ -110,13 +110,19 @@ const RestaurantsDetails = () => {
   }
 
   return (
-    <div className="mx-10 mt-[7rem] overflow-hidden">
+    <div className="mx-10 mt-[4rem] overflow-hidden">
       {/* main section */}
 
       <div className="my-[2rem] border p-4">
         <div className="flex  menu-header justify-between">
-          <div className="flex menu-header-item gap-8">
-            <img width={150} src={IMG_CDN_URL + menuInfo?.cloudinaryImageId} />
+          <div className="flex flex-col sm:flex-row gap-8">
+            <div className="flex justify-center">
+              <img
+                width={300}
+                className=""
+                src={IMG_CDN_URL + menuInfo?.cloudinaryImageId}
+              />
+            </div>
             <div className="text-gray-700 flex flex-col gap-1">
               <h1 className="font-semibold text-lg">{menuInfo?.name}</h1>
               <p>{menuInfo?.cuisines.join(" , ")}</p>
@@ -138,8 +144,8 @@ const RestaurantsDetails = () => {
 
       {/* Search Input */}
 
-      <div className="flex flex-col md:flex-row justify-around mb-6 items-center">
-        <div className="flex flex-wrap gap-2 text-white rounded">
+      <div className="flex flex-col md:flex-row justify-around gap-4 mb-8 items-center">
+        <div className="flex  gap-2 text-white rounded">
           <div className="p-2 bg-gray-800 rounded">
             Menu Items: {filteredMenuItems?.length || 0}
           </div>

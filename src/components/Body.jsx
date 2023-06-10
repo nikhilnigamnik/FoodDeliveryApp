@@ -31,13 +31,15 @@ const Body = () => {
   ) : (
     <>
       {/* Searching Section */}
-      <div className="flex flex-col p-8 md:flex-row gap-8  justify-around items-center">
-        <div className="bg-gray-800 text-white rounded p-2 ml-0 md:ml-2 mt-2 md:mt-0">
-          <span>Total Restaurants: {allResturantCount}</span>
+
+      <div className="flex flex-col items-center justify-around sm:flex-row mt-12 mb-4">
+        <div className="bg-gray-800 text-white rounded p-2 mb-2 sm:mb-0 sm:w-auto sm:mr-0  md:mr-2">
+          <span className="">Total Restaurants: {allResturantCount}</span>
         </div>
+
         <div className="flex">
           <input
-            className="border rounded-l-md p-2 mb-2 "
+            className="border rounded-l-md p-2 sm:mb-0"
             type="text"
             placeholder="Search for restaurant"
             value={searchText}
@@ -46,7 +48,7 @@ const Body = () => {
             }}
           />
           <button
-            className="bg-gray-800 p-2 mb-2 text-white  rounded-r-md"
+            className="bg-gray-800 p-2 text-white rounded-r-md"
             onClick={() => {
               const data = filterData(searchText, allRestaurants);
               setFilteredRestaurants(data);
