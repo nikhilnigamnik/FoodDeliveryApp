@@ -12,7 +12,7 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
-    toast.success(`${item.name} added to cart!`);
+    // toast.success(`${item.name} added to cart!`);
   };
   return (
     <div className="my-2 mt-[7rem] items-center mx-4 flex justify-center flex-1 flex-wrap sm:flex-nowrap">
